@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:membership_tool/screens/home.dart';
+import 'package:membership_tool/themes/theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Paddler Co-op Membership Database',
       home: const HomePage(title: 'Paddler Co-op Membership Database'),
+      theme: defaultTheme,
     );
   }
 }
-
