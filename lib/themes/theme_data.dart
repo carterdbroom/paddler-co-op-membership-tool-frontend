@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData defaultTheme = ThemeData(
-  scaffoldBackgroundColor: Color(0xFF1C2321),
+  scaffoldBackgroundColor: Color(0xFF1F1F1F),
   colorScheme: ColorScheme(
     brightness: Brightness.dark,
     primary: Color(0xFFFFC107),
@@ -18,13 +18,21 @@ ThemeData defaultTheme = ThemeData(
   ),
 
   textTheme: TextTheme(
-    titleLarge: GoogleFonts.roboto(fontSize: 48, fontWeight: FontWeight.bold),
-    titleMedium: GoogleFonts.roboto(
+    headlineLarge: GoogleFonts.roboto(
+      fontSize: 48,
+      fontWeight: FontWeight.bold,
+    ),
+    headlineMedium: GoogleFonts.roboto(
       fontSize: 40,
       fontWeight: FontWeight.bold,
-      color: Color(0xFFFF9C00),
     ),
-    titleSmall: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.bold),
+    headlineSmall: GoogleFonts.roboto(
+      fontSize: 32,
+      fontWeight: FontWeight.bold,
+    ),
+    titleLarge: GoogleFonts.roboto(fontSize: 24, fontWeight: FontWeight.bold),
+    titleMedium: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.bold),
+    titleSmall: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.bold),
     bodyLarge: GoogleFonts.roboto(fontSize: 24),
     bodyMedium: GoogleFonts.roboto(fontSize: 16),
     bodySmall: GoogleFonts.roboto(fontSize: 12),

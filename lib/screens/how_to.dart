@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:membership_tool/widgets/navigation_column.dart';
 
-class AnalyticsPage extends StatelessWidget {
-  const AnalyticsPage({super.key});
+class HowToPage extends StatelessWidget {
+  const HowToPage({super.key});
 
   @override
   Widget build(BuildContext context) {

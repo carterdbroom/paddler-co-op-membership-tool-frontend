@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:membership_tool/widgets/home_page_text_section.dart';
+import 'package:membership_tool/widgets/home_page_text_card.dart';
 import 'package:membership_tool/widgets/navigation_column.dart';
-import 'package:membership_tool/images.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+  const HomePage({super.key});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -14,8 +13,6 @@ class HomePage extends StatefulWidget {
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-
-  final String title;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -28,6 +25,8 @@ class _HomePageState extends State<HomePage> {
     const aboutTitle = "About";
     const howToTitle = "How To Use";
     const contactTitle = "Contact";
+    const searchTitle = "Search";
+    const analyticsTitle = "Analytics";
     const programDescription =
         "This database will be used to keep track of all Paddler "
         "Co-op members, past and present. It will also include "
@@ -69,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Text(
                           title,
-                          style: Theme.of(context).textTheme.titleMedium,
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                       ),
                     ),
@@ -97,28 +96,42 @@ class _HomePageState extends State<HomePage> {
                   radius: BorderRadius.all(Radius.circular(2.0)),
                 ),
                 Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10.0,
-                    crossAxisSpacing: 10.0,
-                    children: [
-                      HomePageTextSection(
-                        title: aboutTitle,
-                        body: programDescription,
-                      ),
-                      HomePageTextSection(
-                        title: aboutTitle,
-                        body: programDescription,
-                      ),
-                      HomePageTextSection(
-                        title: aboutTitle,
-                        body: programDescription,
-                      ),
-                      HomePageTextSection(
-                        title: aboutTitle,
-                        body: programDescription,
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(2, 6, 2, 0),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: 3 / 1,
+                      shrinkWrap: true,
+                      children: [
+                        HomePageTextCard(
+                          title: aboutTitle,
+                          body: programDescription,
+                          routeName: "/about",
+                        ),
+                        HomePageTextCard(
+                          title: howToTitle,
+                          body: programDescription,
+                          routeName: "/how_to",
+                        ),
+                        HomePageTextCard(
+                          title: searchTitle,
+                          body: programDescription,
+                          routeName: "/search",
+                        ),
+                        HomePageTextCard(
+                          title: analyticsTitle,
+                          body: programDescription,
+                          routeName: "/analytics",
+                        ),
+                        HomePageTextCard(
+                          title: contactTitle,
+                          body: programDescription,
+                          routeName: "/contact",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
