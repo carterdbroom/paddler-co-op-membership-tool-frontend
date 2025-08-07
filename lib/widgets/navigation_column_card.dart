@@ -51,9 +51,12 @@ class _NavigationColumnCardState extends State<NavigationColumnCard> {
             child: Center(
               child: FittedBox(
                 fit: BoxFit.scaleDown, // Scales down to fit, but won't scale up
-                child: Text(
-                  widget.buttonName,
-                  style: Theme.of(context).textTheme.titleMedium,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    widget.buttonName,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
               ),
             ),

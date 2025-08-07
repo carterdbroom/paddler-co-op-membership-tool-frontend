@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:membership_tool/widgets/home_page_text_card.dart';
 import 'package:membership_tool/widgets/navigation_column.dart';
+import 'package:membership_tool/widgets/navigation_column_card.dart';
+import 'package:membership_tool/widgets/page_headline.dart';
+import 'package:membership_tool/widgets/update_database_button.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -15,16 +18,10 @@ class HomePage extends StatefulWidget {
   // always marked "final".
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
     const title = "Paddler Co-op Membership Database";
     const aboutTitle = "About";
     const howToTitle = "How To Use";
-    const contactTitle = "Contact";
     const searchTitle = "Search";
     const analyticsTitle = "Analytics";
     const programDescription =
@@ -56,36 +53,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsetsGeometry.fromLTRB(
-                          7.0,
-                          6.0,
-                          6.0,
-                          1.0,
-                        ),
-                        child: Text(
-                          title,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(6.0, 6.0, 7.0, 6.0),
-                      child: Container(
-                        width: 138.33,
-                        height: 41.66,
-                        child: Image.asset(
-                          "assets/images/paddlerCo-opLogoWhite.png",
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                PageHeadline(headline: title),
 
                 Divider(
                   color: Theme.of(context).colorScheme.primary,
@@ -98,37 +66,44 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(2, 6, 2, 0),
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 10.0,
-                      crossAxisSpacing: 10.0,
-                      childAspectRatio: 3 / 1,
-                      shrinkWrap: true,
+                    child: Column(
                       children: [
-                        HomePageTextCard(
-                          title: aboutTitle,
-                          body: programDescription,
-                          routeName: "/about",
+                        Expanded(
+                          child: GridView.count(
+                            crossAxisCount: 2,
+                            //mainAxisSpacing: 2.0,
+                            //crossAxisSpacing: 2.0,
+                            childAspectRatio: 3 / 1,
+                            //shrinkWrap: true,
+                            children: [
+                              HomePageTextCard(
+                                title: aboutTitle,
+                                body: programDescription,
+                                routeName: "/about",
+                              ),
+                              HomePageTextCard(
+                                title: howToTitle,
+                                body: programDescription,
+                                routeName: "/how_to",
+                              ),
+                              HomePageTextCard(
+                                title: searchTitle,
+                                body: programDescription,
+                                routeName: "/search",
+                              ),
+                              HomePageTextCard(
+                                title: analyticsTitle,
+                                body: programDescription,
+                                routeName: "/analytics",
+                              ),
+                            ],
+                          ),
                         ),
-                        HomePageTextCard(
-                          title: howToTitle,
-                          body: programDescription,
-                          routeName: "/how_to",
-                        ),
-                        HomePageTextCard(
-                          title: searchTitle,
-                          body: programDescription,
-                          routeName: "/search",
-                        ),
-                        HomePageTextCard(
-                          title: analyticsTitle,
-                          body: programDescription,
-                          routeName: "/analytics",
-                        ),
-                        HomePageTextCard(
-                          title: contactTitle,
-                          body: programDescription,
-                          routeName: "/contact",
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            UpdateDatabaseButton(buttonName: "Update Database"),
+                          ],
                         ),
                       ],
                     ),

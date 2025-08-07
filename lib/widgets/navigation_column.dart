@@ -28,7 +28,6 @@ class NavigationColumn extends StatelessWidget {
               buttonName: "Analytics",
               routeName: "/analytics",
             ),
-            NavigationColumnCard(buttonName: "Contact", routeName: "/contact"),
           ],
         ),
       ),
