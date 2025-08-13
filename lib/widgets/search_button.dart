@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class UpdateDatabaseButton extends StatefulWidget {
-  const UpdateDatabaseButton({super.key, required this.buttonName});
-
-  final String buttonName;
+class SearchButton extends StatefulWidget {
+  const SearchButton({super.key});
 
   @override
-  State<UpdateDatabaseButton> createState() => _UpdateDatabaseButtonState();
+  State<SearchButton> createState() => _SearchButtonState();
 }
 
-class _UpdateDatabaseButtonState extends State<UpdateDatabaseButton> {
+class _SearchButtonState extends State<SearchButton> {
   bool _hovering = false;
 
   @override
@@ -40,7 +37,6 @@ class _UpdateDatabaseButtonState extends State<UpdateDatabaseButton> {
                       BoxShadow(
                         color: Theme.of(context).colorScheme.primary,
                         blurRadius: 20,
-                        offset: Offset(-5, -5),
                         spreadRadius: 8,
                       ),
                     ]
@@ -54,18 +50,12 @@ class _UpdateDatabaseButtonState extends State<UpdateDatabaseButton> {
                     horizontal: 16.0,
                     vertical: 8.0,
                   ),
-                  child: SvgPicture.asset(
-                    'assets/icons/databaseUpload.svg', // Replace with your icon path
-                    width: 48,
-                    height: 48,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(
-                        context,
-                      ).colorScheme.secondary, // Your desired color
-                      BlendMode.srcIn,
+                  child: Text(
+                    "Search",
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
-                    // Change just the color
-                  ),
+                  ), // Change just the color
                 ),
               ),
             ),

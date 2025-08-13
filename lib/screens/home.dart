@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:membership_tool/widgets/home_page_text_card.dart';
 import 'package:membership_tool/widgets/navigation_column.dart';
-import 'package:membership_tool/widgets/navigation_column_card.dart';
 import 'package:membership_tool/widgets/page_headline.dart';
 import 'package:membership_tool/widgets/update_database_button.dart';
 
@@ -23,6 +22,7 @@ class HomePage extends StatelessWidget {
     const aboutTitle = "About";
     const howToTitle = "How To Use";
     const searchTitle = "Search";
+    const resultsTitle = "Results";
     const analyticsTitle = "Analytics";
     const programDescription =
         "This database will be used to keep track of all Paddler "
@@ -90,6 +90,11 @@ class HomePage extends StatelessWidget {
                                 title: searchTitle,
                                 body: programDescription,
                                 routeName: "/search",
+                              ),
+                              HomePageTextCard(
+                                title: resultsTitle,
+                                body: programDescription,
+                                routeName: "/results",
                               ),
                               HomePageTextCard(
                                 title: analyticsTitle,

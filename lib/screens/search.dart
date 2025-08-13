@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:membership_tool/screens/search_screen_tabs/membership_status_tab.dart';
+import 'package:membership_tool/screens/search_screen_tabs/time_based_tab.dart';
 import 'package:membership_tool/widgets/navigation_column.dart';
 import 'package:membership_tool/widgets/page_headline.dart';
+import 'package:membership_tool/widgets/search_button.dart';
 import 'package:membership_tool/widgets/update_database_button.dart';
 
 class SearchPage extends StatefulWidget {
@@ -10,36 +13,18 @@ class SearchPage extends StatefulWidget {
   State<SearchPage> createState() => _SearchPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
-  String _dropdownValue = "-";
+class _SearchPageState extends State<SearchPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    void dropdownChanged(String? value) {
-      if (value is String) {
-        setState(() {
-          _dropdownValue = value;
-        });
-      }
-    }
-
-    const String firstMenuPrompt = "What are you searching for?";
-    const String secondMenuPrompt =
-        "How many years back would you like to search?";
-    final List<DropdownMenuItem<String>> items = [
-      DropdownMenuItem(
-        value: "-",
-        child: Text("-", style: Theme.of(context).textTheme.bodyMedium),
-      ),
-      DropdownMenuItem(
-        value: "Members",
-        child: Text("Members", style: Theme.of(context).textTheme.bodyMedium),
-      ),
-      DropdownMenuItem(
-        value: "Courses",
-        child: Text("Courses", style: Theme.of(context).textTheme.bodyMedium),
-      ),
-    ];
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Row(
@@ -60,78 +45,32 @@ class _SearchPageState extends State<SearchPage> {
                   endIndent: 5.0,
                   radius: BorderRadius.all(Radius.circular(2.0)),
                 ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+                  child: TabBar(
+                    tabs: [
+                      Tab(text: "Time Based Search"),
+                      Tab(text: "Membership Status Search"),
+                      Tab(text: "Advanced Search"),
+                    ],
+                    controller: _tabController,
+                  ),
+                ),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: TabBarView(
+                    controller: _tabController,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
-                        child: Text(
-                          firstMenuPrompt,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: DropdownButton(
-                            items: items,
-                            value: _dropdownValue,
-                            onChanged: dropdownChanged,
-                            isExpanded: true,
-                            elevation: 10,
-                            borderRadius: BorderRadius.circular(8.0),
-                            padding: const EdgeInsets.all(8.0),
-                            iconEnabledColor: Theme.of(
-                              context,
-                            ).colorScheme.primary,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
-                        child: Text(
-                          secondMenuPrompt,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: DropdownButton(
-                            items: items,
-                            value: _dropdownValue,
-                            onChanged: dropdownChanged,
-                            isExpanded: true,
-                            elevation: 10,
-                            borderRadius: BorderRadius.circular(8.0),
-                            padding: const EdgeInsets.all(8.0),
-                            iconEnabledColor: Theme.of(
-                              context,
-                            ).colorScheme.primary,
-                          ),
-                        ),
-                      ),
+                      Center(child: TimeBasedSearchTab()),
+                      Center(child: MembershipStatusSearchTab()),
+                      Center(child: Text("Advanced Search")),
                     ],
                   ),
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Expanded(child: SearchButton()),
                     UpdateDatabaseButton(buttonName: "Update Database"),
                   ],
                 ),
