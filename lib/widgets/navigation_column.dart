@@ -24,6 +24,7 @@ class NavigationColumn extends StatelessWidget {
             NavigationColumnCard(buttonName: "About", routeName: "/about"),
             NavigationColumnCard(buttonName: "How To", routeName: "/how_to"),
             NavigationColumnCard(buttonName: "Search", routeName: "/search"),
+            NavigationColumnCard(buttonName: "Results", routeName: "/results"),
             NavigationColumnCard(
               buttonName: "Analytics",
               routeName: "/analytics",

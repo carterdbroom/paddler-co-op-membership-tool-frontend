@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:membership_tool/screens/search_screen_tabs/advanced_tab.dart';
 import 'package:membership_tool/screens/search_screen_tabs/membership_status_tab.dart';
 import 'package:membership_tool/screens/search_screen_tabs/time_based_tab.dart';
 import 'package:membership_tool/widgets/navigation_column.dart';
@@ -60,9 +61,9 @@ class _SearchPageState extends State<SearchPage>
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      Center(child: TimeBasedSearchTab()),
-                      Center(child: MembershipStatusSearchTab()),
-                      Center(child: Text("Advanced Search")),
+                      TimeBasedSearchTab(),
+                      MembershipStatusSearchTab(),
+                      AdvancedSearchTab(),
                     ],
                   ),
                 ),

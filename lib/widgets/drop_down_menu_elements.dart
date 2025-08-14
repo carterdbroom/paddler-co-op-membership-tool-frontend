@@ -205,4 +205,59 @@ class DropDownMenuItems {
       ),
     ];
   }
+
+  // Advanced Search Tab Menu 1
+  static List<DropdownMenuItem<String>> getSearchAdvancedItems(
+    BuildContext context,
+  ) {
+    return [
+      DropdownMenuItem(
+        value: "-",
+        child: Text("-", style: Theme.of(context).textTheme.bodyMedium),
+      ),
+      DropdownMenuItem(
+        value: "Member ID",
+        child: Text("Member ID", style: Theme.of(context).textTheme.bodyMedium),
+      ),
+      DropdownMenuItem(
+        value: "Member First Name",
+        child: Text(
+          "Member First Name",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+      ),
+      DropdownMenuItem(
+        value: "Member Last Name",
+        child: Text(
+          "Member Last Name",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+      ),
+      DropdownMenuItem(
+        value: "First Membership Purchase Date",
+        child: Text(
+          "First Membership Purchase Date",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+      ),
+      DropdownMenuItem(
+        value: "Course ID",
+        child: Text("Course ID", style: Theme.of(context).textTheme.bodyMedium),
+      ),
+      DropdownMenuItem(
+        value: "Course Name",
+        child: Text(
+          "Course Name",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+      ),
+      DropdownMenuItem(
+        value: "Course Start Date",
+        child: Text(
+          "Course Start Date",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+      ),
+    ];
+  }
 }
