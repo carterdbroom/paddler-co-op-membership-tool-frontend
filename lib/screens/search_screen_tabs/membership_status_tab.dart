@@ -12,6 +12,7 @@ class MembershipStatusSearchTab extends StatefulWidget {
 class _MembershipStatusSearchTabState extends State<MembershipStatusSearchTab> {
   String _dropDownMemberStatusValue = "-";
   String _dropDownFirstMembershipPurchaseDateValue = "-";
+  String _dropDownLastMembershipPurchaseDateValue = "-";
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,20 @@ class _MembershipStatusSearchTabState extends State<MembershipStatusSearchTab> {
       }
     }
 
+    void lastMembershipPurchaseDateChanged(String? value) {
+      if (value is String) {
+        setState(() {
+          _dropDownLastMembershipPurchaseDateValue = value;
+        });
+      }
+    }
+
     const String membershipStatusPrompt =
         "Select the membership status you are searching for";
     const String firstMembershipPurchaseDatePrompt =
         "Select how far back you want to search for first membership purchases";
+    const String lastMembershipPurchaseDatePrompt =
+        "Select how far back you want to search for last membership purchases";
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,9 +100,44 @@ class _MembershipStatusSearchTabState extends State<MembershipStatusSearchTab> {
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: DropdownButton(
-              items: DropDownMenuItems.getSearchStartDateItems(context),
+              items: DropDownMenuItems.getSearchMembershipPurchaseDateItems(
+                context,
+              ),
               value: _dropDownFirstMembershipPurchaseDateValue,
               onChanged: firstMembershipPurchaseDateChanged,
+              isExpanded: true,
+              elevation: 10,
+              borderRadius: BorderRadius.circular(8.0),
+              padding: const EdgeInsets.all(8.0),
+              iconEnabledColor: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+        ),
+
+        // Third drop down menu
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
+          child: Text(
+            lastMembershipPurchaseDatePrompt,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Theme.of(context).colorScheme.primary,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: DropdownButton(
+              items: DropDownMenuItems.getSearchMembershipPurchaseDateItems(
+                context,
+              ),
+              value: _dropDownLastMembershipPurchaseDateValue,
+              onChanged: lastMembershipPurchaseDateChanged,
               isExpanded: true,
               elevation: 10,
               borderRadius: BorderRadius.circular(8.0),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:membership_tool/widgets/export_button.dart';
 import 'package:membership_tool/widgets/navigation_column.dart';
 import 'package:membership_tool/widgets/page_headline.dart';
+import 'package:membership_tool/widgets/table_example.dart';
 
 class ResultsPage extends StatefulWidget {
   const ResultsPage({super.key});
@@ -33,9 +35,53 @@ class _ResultsPageState extends State<ResultsPage> {
                   endIndent: 5.0,
                   radius: BorderRadius.all(Radius.circular(2.0)),
                 ),
-                Text(
-                  "Currently no results, try searching for something",
-                  style: Theme.of(context).textTheme.bodyMedium,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: SingleChildScrollView(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minWidth: MediaQuery.of(context).size.width - 150,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: DataTable(
+                              columns: TableExample.getColumns(),
+                              rows: TableExample.getRows(),
+                              headingTextStyle: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(fontStyle: FontStyle.italic),
+                              headingRowColor: WidgetStatePropertyAll<Color>(
+                                Theme.of(context).colorScheme.secondary,
+                              ),
+                              dataRowColor: WidgetStatePropertyAll<Color>(
+                                Theme.of(context).colorScheme.secondary,
+                              ),
+                              border: TableBorder.all(
+                                color: Theme.of(context).colorScheme.primary,
+                                borderRadius: BorderRadius.circular(8.0),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(child: ExportButton(buttonName: "Export As CSV")),
+                    Expanded(
+                      child: ExportButton(
+                        buttonName: "Export As Excel Spreadsheet",
+                      ),
+                    ),
+                    Expanded(child: ExportButton(buttonName: "Export As JSON")),
+                  ],
                 ),
               ],
             ),

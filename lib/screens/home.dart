@@ -18,23 +18,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = "Paddler Co-op Membership Database";
-    const aboutTitle = "About";
-    const howToTitle = "How To Use";
-    const searchTitle = "Search";
-    const resultsTitle = "Results";
-    const analyticsTitle = "Analytics";
-    const programDescription =
-        "This database will be used to keep track of all Paddler "
-        "Co-op members, past and present. It will also include "
-        "data on all courses previously held at the Co-op. It "
-        "includes complete data starting at *Insert Date Here*. "
-        "If this is your first time using the database, please read "
-        "the \"How To\" section on this page. It will explain to you "
-        "how to upload data to the database, how to search for a "
-        "member or course, and how to use the analytics section. "
-        "The database should be self sufficient, but if problems "
-        "arise see the \"Contact\" section on this page.";
+    const String title = "Paddler Co-op Membership Database";
+    const String aboutTitle = "About";
+    const String howToTitle = "How To Use";
+    const String searchTitle = "Search";
+    const String resultsTitle = "Results";
+    const String analyticsTitle = "Analytics";
+    const String aboutDescription =
+        "Want to learn more about this project? Check out the About section.";
+    const String howToDescription =
+        "Read this if you have not before! This will tell you "
+        "how to properly use the database tool.";
+    const String searchDescription =
+        "Trying to get member and course information? This is where you search "
+        "for it.";
+    const String resultsDescription =
+        "This section displays the results of your search.";
+    const String analyticsDescription =
+        "View various analytics related to member and course data.";
 
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -73,32 +74,32 @@ class HomePage extends StatelessWidget {
                             crossAxisCount: 2,
                             //mainAxisSpacing: 2.0,
                             //crossAxisSpacing: 2.0,
-                            childAspectRatio: 3 / 1,
+                            childAspectRatio: 4 / 1,
                             //shrinkWrap: true,
                             children: [
                               HomePageTextCard(
                                 title: aboutTitle,
-                                body: programDescription,
+                                body: aboutDescription,
                                 routeName: "/about",
                               ),
                               HomePageTextCard(
                                 title: howToTitle,
-                                body: programDescription,
+                                body: howToDescription,
                                 routeName: "/how_to",
                               ),
                               HomePageTextCard(
                                 title: searchTitle,
-                                body: programDescription,
+                                body: searchDescription,
                                 routeName: "/search",
                               ),
                               HomePageTextCard(
                                 title: resultsTitle,
-                                body: programDescription,
+                                body: resultsDescription,
                                 routeName: "/results",
                               ),
                               HomePageTextCard(
                                 title: analyticsTitle,
-                                body: programDescription,
+                                body: analyticsDescription,
                                 routeName: "/analytics",
                               ),
                             ],

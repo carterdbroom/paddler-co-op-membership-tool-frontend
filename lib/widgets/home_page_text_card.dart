@@ -78,7 +78,7 @@ class _HomePageTextSectionState extends State<HomePageTextCard> {
                   padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
                   child: Text(
                     widget.body,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context).textTheme.bodyMedium,
                     maxLines: 7,
                     overflow: TextOverflow.ellipsis,
                   ),
