@@ -72,7 +72,11 @@ class _SearchPageState extends State<SearchPage>
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Expanded(child: SearchButton()),
-                    UpdateDatabaseButton(buttonName: "Update Database"),
+                    UpdateDatabaseButton(
+                      buttonName: "Update Database",
+                      offsetLeft: -5,
+                      offsetRight: -5,
+                    ),
                   ],
                 ),
               ],

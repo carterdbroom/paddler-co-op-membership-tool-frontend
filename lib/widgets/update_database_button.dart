@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class UpdateDatabaseButton extends StatefulWidget {
-  const UpdateDatabaseButton({super.key, required this.buttonName});
+  const UpdateDatabaseButton({
+    super.key,
+    required this.buttonName,
+    required this.offsetLeft,
+    required this.offsetRight,
+  });
 
   final String buttonName;
+  final double offsetLeft;
+  final double offsetRight;
 
   @override
   State<UpdateDatabaseButton> createState() => _UpdateDatabaseButtonState();
@@ -40,7 +47,7 @@ class _UpdateDatabaseButtonState extends State<UpdateDatabaseButton> {
                       BoxShadow(
                         color: Theme.of(context).colorScheme.primary,
                         blurRadius: 20,
-                        offset: Offset(-5, -5),
+                        offset: Offset(widget.offsetLeft, widget.offsetRight),
                         spreadRadius: 8,
                       ),
                     ]

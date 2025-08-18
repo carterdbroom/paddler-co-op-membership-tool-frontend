@@ -197,9 +197,9 @@ class DropDownMenuItems {
       ),
 
       DropdownMenuItem(
-        value: "Not a Current Member",
+        value: "Not a Current Member (Bad Standing)",
         child: Text(
-          "Not a Current Member",
+          "Not a Current Member (Bad Standing)",
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),

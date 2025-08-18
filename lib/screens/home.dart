@@ -108,7 +108,11 @@ class HomePage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            UpdateDatabaseButton(buttonName: "Update Database"),
+                            UpdateDatabaseButton(
+                              buttonName: "Update Database",
+                              offsetLeft: -5,
+                              offsetRight: -5,
+                            ),
                           ],
                         ),
                       ],
