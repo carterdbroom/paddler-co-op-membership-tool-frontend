@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SearchButton extends StatefulWidget {
-  const SearchButton({super.key});
+  final bool enabled;
+
+  const SearchButton({super.key, this.enabled = true});
 
   @override
   State<SearchButton> createState() => _SearchButtonState();
@@ -19,14 +21,20 @@ class _SearchButtonState extends State<SearchButton> {
         onExit: (_) => setState(() => _hovering = false),
         child: InkWell(
           onTap: () {
-            Placeholder();
+            if (widget.enabled) {
+              Placeholder();
+            } else {
+              Placeholder();
+            }
           },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeInOut,
             constraints: const BoxConstraints(maxWidth: 200, maxHeight: 80),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: widget.enabled
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.red,
               borderRadius: BorderRadius.circular(20.0),
               border: Border.all(
                 color: Theme.of(context).colorScheme.onPrimary,

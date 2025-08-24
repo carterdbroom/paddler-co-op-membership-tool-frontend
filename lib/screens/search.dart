@@ -17,11 +17,18 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  bool _isSearchValid = false;
 
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
     super.initState();
+  }
+
+  void _updateSearchValidity(bool isValid) {
+    setState(() {
+      _isSearchValid = isValid;
+    });
   }
 
   @override
@@ -61,7 +68,9 @@ class _SearchPageState extends State<SearchPage>
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      TimeBasedSearchTab(),
+                      TimeBasedSearchTab(
+                        onValidityChanged: _updateSearchValidity,
+                      ),
                       MembershipStatusSearchTab(),
                       AdvancedSearchTab(),
                     ],
@@ -71,7 +80,7 @@ class _SearchPageState extends State<SearchPage>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Expanded(child: SearchButton()),
+                    Expanded(child: SearchButton(enabled: _isSearchValid)),
                     UpdateDatabaseButton(
                       buttonName: "Update Database",
                       offsetLeft: -5,

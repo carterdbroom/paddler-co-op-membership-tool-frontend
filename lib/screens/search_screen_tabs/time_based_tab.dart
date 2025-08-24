@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:membership_tool/widgets/drop_down_menu_elements.dart';
 
 class TimeBasedSearchTab extends StatefulWidget {
-  const TimeBasedSearchTab({super.key});
+  final Function(bool) onValidityChanged;
+  const TimeBasedSearchTab({super.key, required this.onValidityChanged});
 
   @override
   State<TimeBasedSearchTab> createState() => _TimeBasedSearchTabState();
@@ -15,10 +16,63 @@ class _TimeBasedSearchTabState extends State<TimeBasedSearchTab> {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, int> startDateValueMap = {
+      "-": 0x7FFFFFFFFFFFFFFF,
+      "1 Year": 1,
+      "2 Years": 2,
+      "3 Years": 3,
+      "4 Years": 4,
+      "5 Years": 5,
+      "6 Years": 6,
+      "7 Years": 7,
+      "8 Years": 8,
+      "9 Years": 9,
+      "10 Years": 10,
+      "15 Years": 15,
+      "20 Years": 20,
+      "30 Years": 30,
+      "40 Years": 40,
+      "50 Years": 50,
+      "Start of Records": 0x7FFFFFFFFFFFFFFF,
+    };
+
+    Map<String, int> endDateValueMap = {
+      "-": 0,
+      "Present Date": 0,
+      "1 Year": 1,
+      "2 Years": 2,
+      "3 Years": 3,
+      "4 Years": 4,
+      "5 Years": 5,
+      "6 Years": 6,
+      "7 Years": 7,
+      "8 Years": 8,
+      "9 Years": 9,
+      "10 Years": 10,
+      "15 Years": 15,
+      "20 Years": 20,
+      "30 Years": 30,
+      "40 Years": 40,
+      "50 Years": 50,
+    };
+
+    bool isValidSearch() {
+      if (!endDateValueMap.containsKey(_dropdownEndDateValue) ||
+          !startDateValueMap.containsKey(_dropdownStartDateValue)) {
+        return false;
+      }
+      if (endDateValueMap[_dropdownEndDateValue]! >
+          startDateValueMap[_dropdownStartDateValue]!) {
+        return false;
+      }
+      return true;
+    }
+
     void searchTypeChanged(String? value) {
       if (value is String) {
         setState(() {
           _dropdownSearchTypeValue = value;
+          widget.onValidityChanged(isValidSearch());
         });
       }
     }
@@ -27,6 +81,7 @@ class _TimeBasedSearchTabState extends State<TimeBasedSearchTab> {
       if (value is String) {
         setState(() {
           _dropdownStartDateValue = value;
+          widget.onValidityChanged(isValidSearch());
         });
       }
     }
@@ -35,6 +90,7 @@ class _TimeBasedSearchTabState extends State<TimeBasedSearchTab> {
       if (value is String) {
         setState(() {
           _dropdownEndDateValue = value;
+          widget.onValidityChanged(isValidSearch());
         });
       }
     }
