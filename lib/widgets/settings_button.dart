@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class UpdateDatabaseButton extends StatefulWidget {
-  const UpdateDatabaseButton({
+class SettingsButton extends StatefulWidget {
+  const SettingsButton({
     super.key,
     required this.buttonName,
-    required this.offsetLeft,
-    required this.offsetRight,
+    required this.routeName,
   });
 
   final String buttonName;
-  final double offsetLeft;
-  final double offsetRight;
+  final String routeName;
 
   @override
-  State<UpdateDatabaseButton> createState() => _UpdateDatabaseButtonState();
+  State<SettingsButton> createState() => _NavigationColumnCardState();
 }
 
-class _UpdateDatabaseButtonState extends State<UpdateDatabaseButton> {
+class _NavigationColumnCardState extends State<SettingsButton> {
   bool _hovering = false;
 
   @override
@@ -29,26 +27,24 @@ class _UpdateDatabaseButtonState extends State<UpdateDatabaseButton> {
         onExit: (_) => setState(() => _hovering = false),
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(context, "/settings_upload");
+            Navigator.of(context).pushNamed(widget.routeName);
           },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeInOut,
-            constraints: const BoxConstraints(maxWidth: 200, maxHeight: 80),
+            constraints: const BoxConstraints(maxWidth: 90, maxHeight: 40),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(8.0),
               border: Border.all(
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: Theme.of(context).colorScheme.surface,
                 width: 2.0,
               ),
               boxShadow: _hovering
                   ? [
                       BoxShadow(
                         color: Theme.of(context).colorScheme.primary,
-                        blurRadius: 20,
-                        offset: Offset(widget.offsetLeft, widget.offsetRight),
-                        spreadRadius: 8,
+                        blurRadius: 8,
                       ),
                     ]
                   : [],
@@ -57,12 +53,9 @@ class _UpdateDatabaseButtonState extends State<UpdateDatabaseButton> {
               child: FittedBox(
                 fit: BoxFit.scaleDown, // Scales down to fit, but won't scale up
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 8.0,
-                  ),
+                  padding: const EdgeInsets.all(5.0),
                   child: SvgPicture.asset(
-                    'assets/icons/databaseUpload.svg', // Replace with your icon path
+                    'assets/icons/settings.svg', // Replace with your icon path
                     width: 48,
                     height: 48,
                     colorFilter: ColorFilter.mode(

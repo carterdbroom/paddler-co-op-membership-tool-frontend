@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:membership_tool/widgets/navigation_column_card.dart';
+import 'package:membership_tool/widgets/settings_button.dart';
+import 'package:membership_tool/widgets/update_database_button.dart';
 
 class NavigationColumn extends StatelessWidget {
   const NavigationColumn({super.key});
@@ -28,6 +30,12 @@ class NavigationColumn extends StatelessWidget {
             NavigationColumnCard(
               buttonName: "Analytics",
               routeName: "/analytics",
+            ),
+            Expanded(
+              child: SettingsButton(
+                buttonName: "Settings",
+                routeName: "/settings",
+              ),
             ),
           ],
         ),

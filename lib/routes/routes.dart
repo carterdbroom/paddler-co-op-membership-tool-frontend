@@ -5,6 +5,7 @@ import 'package:membership_tool/screens/how_to.dart';
 import 'package:membership_tool/screens/search.dart';
 import 'package:membership_tool/screens/analytics.dart';
 import 'package:membership_tool/screens/results.dart';
+import 'package:membership_tool/screens/settings.dart';
 
 final Map<String, WidgetBuilder> routes = {
   '/home': (context) => HomePage(),
@@ -13,4 +14,6 @@ final Map<String, WidgetBuilder> routes = {
   '/analytics': (context) => AnalyticsPage(),
   '/about': (context) => const AboutPage(),
   '/results': (context) => const ResultsPage(),
+  '/settings': (context) => const SettingsPage(initialTab: 0),
+  '/settings_upload': (context) => const SettingsPage(initialTab: 1),
 };
