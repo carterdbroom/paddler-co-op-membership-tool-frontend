@@ -1,10 +1,12 @@
 import os
 import shutil
 import csv
+import sys
 
 # Reads CSV files and sends them to the database
 def update_database(file_path):
     
+
     # Reading all of the rows of the CSV file
     with open(file_path, mode='r') as file:
         reader = csv.reader(file)
