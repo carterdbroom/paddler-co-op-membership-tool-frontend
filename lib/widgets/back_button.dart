@@ -25,10 +25,10 @@ class _CustomBackButtonState extends State<CustomBackButton> {
             curve: Curves.easeInOut,
             constraints: const BoxConstraints(maxWidth: 90, maxHeight: 40),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(8.0),
               border: Border.all(
-                color: Theme.of(context).colorScheme.surface,
+                color: Theme.of(context).colorScheme.primary,
                 width: 2.0,
               ),
               boxShadow: _hovering
@@ -50,7 +50,7 @@ class _CustomBackButtonState extends State<CustomBackButton> {
                     width: 48,
                     height: 48,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).colorScheme.secondary,
+                      Theme.of(context).colorScheme.onSecondary,
                       BlendMode.srcIn,
                     ),
                   ),

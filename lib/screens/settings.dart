@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:membership_tool/screens/settings_screens/privacy_tab.dart';
 import 'package:membership_tool/screens/settings_screens/upload_tab.dart';
+import 'package:membership_tool/widgets/back_button.dart';
 import 'package:membership_tool/widgets/page_headline.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _SettingsPageState extends State<SettingsPage>
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [BackButton()],
+                children: [CustomBackButton()],
               ),
             ),
           ),
